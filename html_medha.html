@@ -1,74 +1,7 @@
 <!doctype html>
 <html>
     <head>
-            <style>
-	#todotable {
-  	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  	border-collapse: collapse;
-	  width: 100%;
-	}
-
-	#todotable td, #todotable th {
-  	border: 1px solid #ddd;
-  	padding: 8px;
-	}
-
-	#todotable tr:nth-child(even){background-color: #f2f2f2;}
-
-	#todotable tr:hover {background-color: #ddd;}
-
-	#todotable th {
-  	padding-top: 12px;
-  	padding-bottom: 12px;
-  	text-align: left;
-  	background-color: #909090;
- 	 color: white;
-	}
-	
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.bg-image {
-  /* The image used */
-  background-image: url("medha_todo_bgimage.jpeg");
-  
-  /* Add the blur effect */
-  filter: blur(8px);
-  -webkit-filter: blur(3px);
-  
-  /* Full height */
-  height: 100%; 
-  
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* Position text in the middle of the page/image */
-.bg-text {
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
-  color: black;
-  font-weight: bold;
-  border: 3px solid #f1f1f1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  width: 80%;
-  padding: 20px;
-  text-align: center;
-}
-</style>
+        <link rel="stylesheet" href="makealist.css">
     </head>
         <body>
 	<div class="bg-image"></div>
@@ -92,74 +25,9 @@ body, html {
                 </table><br>
 	</div>
                 <form><input type="button" onclick="todelete(todotable)" value="Click to delete from list"></form>
-            </fieldset>
-            <script>
-                    function toadd()
-                    {
-                        if(document.getElementById("frm").Add_task.value == "" || document.getElementById("frm").Describe_task.value==="")
-                         { 
-                             alert("Add the task and description in the respective fields to be added."); 
-                         } 
-                        else
-                        {
-                            var table=document.getElementById("todotable");
-                            var row=table.insertRow(1);
-                            var checkbox1=row.insertCell(0);
-                            var task=row.insertCell(1);
-                            var description=row.insertCell(2);
-                            var start_date=row.insertCell(3);
-                            var end_date=row.insertCell(4);
-                            var checkbox=document.createElement('input')
-                            checkbox.type = 'checkbox';
-                            checkbox.name="select";
-                            checkbox.id='select';
-                            checkbox1.appendChild(checkbox);
-                            task.innerHTML=document.getElementById("frm").Add_task.value
-                            description.innerHTML=document.getElementById("frm").Describe_task.value
-                            start_date.innerHTML= new Date();
-                            var end=new Date(document.getElementById("frm").end_date.value);
-                            end_date.innerHTML=end;
-                            
-                        }
-                    }
-                    function todelete(todotable)
-                    {
-                        var table1=document.getElementById("todotable");
-                        
-                        var row1=table1.rows.length;
-                        var count=0; 
-                         for(var i=1;i<table1.rows.length;i++)
-                        {
-                             var row2=table1.rows[i];
-                            var chk=row2.cells[0].childNodes[0];
-                            if(chk.checked==true)
-                            {
-                                document.getElementById('todotable').deleteRow(i);
-                                row1--;
-                                i--;
-                                count=count+1;
-                            }
-                        }
-                    }
-                    
-                    function myFunction() {
-                       setInterval(function to_check_end_date(todotable)
-                    {
-                        var d=new Date();
-                        var table1=document.getElementById("todotable");
-                        for(i=1;i<table1.rows.length;i++)
-                        {
-                            var d=new Date();
-                            var end=new Date(document.getElementById("frm").end_date.value);
-                            if(end.getDate()<=d.getDate() && end.getMonth()<=d.getMonth() && end.getFullYear()<=d.getFullYear())
-                            {
-			
- 		document.getElementById('todotable').deleteRow(i);                           
-	         }
-                        }
-                    }, 3000);}                
-                    myFunction();
-             </script>         
-	</div>
+            </fieldset>        
+    </div>
+        <script src="script.js">
+        </script> 
         </body>
 </html>
